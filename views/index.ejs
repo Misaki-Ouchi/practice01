@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+        <!-- 実務課題02 -->
         <table>
             <tr>
                 <th>名前</th>
@@ -13,7 +14,23 @@
                 <th>更新</th>
                 <th>削除</th>
             </tr>
+            <% for(let i=0; i < users.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= users[i].name %>
+                    </td>
+                    <td>
+                        <%= users[i].email %>
+                    </td>
+                    <td>
+                        <a href="/edit/<%= users[i].id%>">更新</a>
+                    </td>
+                    <td><a href="/delete/<%= users[i].id%>">削除</a></td>
+                </tr>
+            <% } %>
         </table>
+        <!-- ここまで実務課題02 -->
+
         <!--こちらに基礎課題で言われてる内容を記述しましょう。ここから-->
         <p id="textTag"></p>
         <!--こちらに基礎課題で言われてる内容を記述しましょう。ここまで-->
@@ -67,13 +84,11 @@
                 users.forEach(function (element) {
                     if (Number(input.value) === element.id) {
                         text1.innerHTML = `名前：${element.name}<br>email：${element.email}`;
-                        console.log(element);
                     }
                 })
             }
             btn.addEventListener('click', searchID);
             // ここまで実務課題01
-
         </script>
     </body>
 </html>
