@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>入力フォーム</title>
+        <style>
+            body {
+                width: 300px;
+                margin: auto;
+            }
+
+            h1 {
+                text-align: center;
+                font-size: 1.5rem;
+            }
+
+            form {
+                padding: 5%;
+            }
+
+            input:first-child {
+                margin-bottom: 5%;
+            }
+
+            button {
+                display: block;
+                border-radius: 10%;
+                padding: 0.3rem 1rem;
+                margin: auto;
+                margin-top: 10%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>入力フォーム</h1>
+        <form action="/" method="POST">
+            name <input id="name" type="text" name="name"><br>
+            email <input id="email" type="text" name="email"><br>
+            <button type="submit">送信</button>
+        </form>
+        <script>
+            let name = document.querySelector('#name');
+            let email = document.querySelector('#email');
+            let btn = document.querySelector('button');
+            function validate() {
+                if (!name.value.match(/^[A-Za-z\.]+$/) || !email.value.match(/.+@.+\..+/)) {
+                    console.log('a');
+                    btn.disabled = true;
+                } else {
+                    btn.disabled = false;
+                    console.log('b');
+                }
+            }
+            name.addEventListener('change', validate);
+            email.addEventListener('change', validate);
+        </script>
+    </body>
+</html>
