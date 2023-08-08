@@ -6,6 +6,8 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+        <!-- 実務課題02 -->
+        <p><a href="/create">ユーザーの追加</a></p>
         <table>
             <tr>
                 <th>名前</th>
@@ -13,8 +15,22 @@
                 <th>更新</th>
                 <th>削除</th>
             </tr>
-            <p><a href="/create">ユーザーの追加</a></p>
+            <% for(let i=0; i < users.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= users[i].name %>
+                    </td>
+                    <td>
+                        <%= users[i].email %>
+                    </td>
+                    <td>
+                        <a href="/edit/<%= users[i].id%>">更新</a>
+                    </td>
+                    <td><a href="/delete/<%= users[i].id%>">削除</a></td>
+                </tr>
+            <% } %>
         </table>
+        <!-- ここまで実務課題02 -->
         <!--こちらに基礎課題で言われてる内容を記述しましょう。ここから-->
         <p id="textTag"></p>
         <!--こちらに基礎課題で言われてる内容を記述しましょう。ここまで-->
@@ -43,7 +59,7 @@
 
             // 基礎課題02:HTML内にulタグを作成し、liタグでapp.jsで作成した情報を画面に表示して下さい。
             // let LIST = JSON.parse('<%= JSON.stringify(list) %>'.replace(/&#34;/g, '"'));
-            // let body = document.querySelector('body');
+            let body = document.querySelector('body');
             // body.insertAdjacentHTML('beforeend', `<ul></ul>`);
             // let ul = document.querySelector('ul');
             // LIST.forEach(function (element) {
@@ -68,7 +84,6 @@
                 users.forEach(function (element) {
                     if (Number(input.value) === element.id) {
                         text1.innerHTML = `名前：${element.name}<br>email：${element.email}`;
-                        console.log(element);
                     }
                 })
             }
